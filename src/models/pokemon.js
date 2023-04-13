@@ -13,6 +13,8 @@ const pokemonModel = (sequelize, DataTypes) => sequelize.define('Pokemon', {
         evolved: ['gymLeader', 'pokemonMaster'],
         legendary: ['pokemonMaster']
       }
+    }
+  }
 });
 
 module.exports = pokemonModel;

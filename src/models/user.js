@@ -1,4 +1,9 @@
 'use strict';
+require('dotenv').config();
+
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const SECRET = process.env.SECRET_STRING;
 
 const userModel = (sequelize, DataTypes) => sequelize.define('User', {
   name: { type: DataTypes.STRING, required: true },
