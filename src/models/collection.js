@@ -31,7 +31,7 @@ function buildYourTeam(arr) {
 }
 
 const userChoices = buildYourTeam(pokemon);
-'use strict';
+console.log(userChoices); // Output the user's chosen 6 Pokémon
 
 
 class Collection {
@@ -93,4 +93,3 @@ class Collection {
 }
 
 module.exports = Collection;
-console.log(userChoices); // Output the user's chosen 6 Pokémon
