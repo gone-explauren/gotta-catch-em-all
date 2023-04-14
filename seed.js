@@ -2,28 +2,28 @@
 
 const pokemonArray = [];
 
-let newPokemon01 = Pokemon.create({
+let newPokemon01 = pokemon.create({
 	"name": "rattata",
   "primaryType": "normal",
   "status": "base"
 });
 pokemonArray.push[newPokemon01.name];
 
-let newPokemon02 = Pokemon.create({
+let newPokemon02 = pokemon.create({
   "name": "ponyta",
   "primaryType": "fire",
   "status": "base"
 });
 pokemonArray.push[newPokemon02.name];
 
-let newPokemon03 = Pokemon.create({
+let newPokemon03 = pokemon.create({
   "name": "clamperl",
   "primaryType": "water",
   "status": "base"
 });
 pokemonArray.push[newPokemon03.name];
 
-let newPokemon04 = Pokemon.create({
+let newPokemon04 = pokemon.create({
 	name: 'drifloon',
   primaryType: 'ghost',
 	secondaryType: 'flying',
@@ -31,14 +31,14 @@ let newPokemon04 = Pokemon.create({
 });
 pokemonArray.push[newPokemon04.name];
 
-let newPokemon05 = Pokemon.create({
+let newPokemon05 = pokemon.create({
 	name: 'sudowoodo',
   primaryType: 'rock',
   status: base,
 });
 pokemonArray.push[newPokemon05.name];
 
-let newPokemon06 = Pokemon.create({
+let newPokemon06 = pokemon.create({
 	name: 'turtwig',
   primaryType: 'grass',
   status: base,
@@ -53,21 +53,21 @@ let newPokemon07 = Pokemon.create({
 });
 pokemonArray.push[newPokemon07.name];
 
-let newPokemon08 = Pokemon.create({
+let newPokemon08 = pokemon.create({
 	name: 'dugtrio',
   primaryType: 'ground',
   status: evolved,
 });
 pokemonArray.push[newPokemon08.name];
 
-let newPokemon09 = Pokemon.create({
+let newPokemon09 = pokemon.create({
 	name: 'arbok',
   primaryType: 'poison',
   status: evolved,
 });
 pokemonArray.push[newPokemon09.name];
 
-let newPokemon10 = Pokemon.create({
+let newPokemon10 = pokemon.create({
 	name: 'xatu',
   primaryType: 'psychic',
 	secondaryType: 'flying',
@@ -75,14 +75,14 @@ let newPokemon10 = Pokemon.create({
 });
 pokemonArray.push[newPokemon10.name];
 
-let newPokemon11 = Pokemon.create({
+let newPokemon11 = pokemon.create({
 	name: 'electivire',
   primaryType: 'electric',
   status: evolved,
 });
 pokemonArray.push[newPokemon11.name];
 
-let newPokemon12 = Pokemon.create({
+let newPokemon12 = pokemon.create({
 	name: 'swampert',
   primaryType: 'water',
 	secondaryType: 'ground',
@@ -90,14 +90,14 @@ let newPokemon12 = Pokemon.create({
 });
 pokemonArray.push[newPokemon12.name];
 
-let newPokemon13 = Pokemon.create({
+let newPokemon13 = pokemon.create({
 	name: 'xerneas',
   primaryType: 'fairy',
   status: legendary,
 });
 pokemonArray.push[newPokemon13.name];
 
-let newPokemon14 = Pokemon.create({
+let newPokemon14 = pokemon.create({
 	name: 'rayquaza',
   primaryType: 'dragon',
 	secondaryType: 'flying',
@@ -105,21 +105,21 @@ let newPokemon14 = Pokemon.create({
 });
 pokemonArray.push[newPokemon14.name];
 
-let newPokemon15 = Pokemon.create({
+let newPokemon15 = pokemon.create({
 	name: 'mewtwo',
   primaryType: 'psychic',
   status: legendary,
 });
 pokemonArray.push[newPokemon15.name];
 
-let newPokemon16 = Pokemon.create({
+let newPokemon16 = pokemon.create({
 	name: 'shaymin',
   primaryType: 'grass',
   status: legendary,
 });
 pokemonArray.push[newPokemon16.name];
 
-let newPokemon17 = Pokemon.create({
+let newPokemon17 = pokemon.create({
 	name: 'victini',
   primaryType: 'fairy',
 	secondaryType: 'fire',
@@ -127,7 +127,7 @@ let newPokemon17 = Pokemon.create({
 });
 pokemonArray.push[newPokemon17.name];
 
-let newPokemon18 = Pokemon.create({
+let newPokemon18 = pokemon.create({
 	name: 'kyogre',
   primaryType: 'water',
   status: legendary,
