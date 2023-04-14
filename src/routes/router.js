@@ -4,7 +4,6 @@ const express = require('express');
 const dataModules = require('../models');
 const bearerAuth = require('../auth/middleware/bearer');
 const permissions = require('../auth/middleware/acl');
-const pokemonArray = require('../../seed')
 
 const router = express.Router();
 
@@ -56,32 +55,6 @@ async function handleCreate(req, res) {
     next(error);
   }
 }
-
-function buildYourTeam(arr) {
-  const userTeam = [];
-
-  while (userTeam.length < 6) {
-    const choices = pokemonArray.filter(p => !userTeam.includes(p));
-    const choice = prompt(`Choose ${6 - userTeam.length} more Pokemon:\n${choices.join('\n')}`);
-
-    if (!choice || !choices.includes(choice)) {
-      alert('Please choose a valid Pokemon!');
-		} else {
-      const pokemon = arr.find(p => p.name === choice);
-
-		if (user.role === 'trainer' && pokemon.status !== 'base') {
-			alert('This Pokemon is too strong for your team! Please choose a different Pokemon.')
-		}else if (user.role === 'gymLeader' && pokemon.status === 'legendary') {
-			alert('This Pokemon is too strong for your team! Please choose a different Pokemon.')
-		} else {
-      userTeam.push(choice);
-    }
-  }
-  return userTeam;
-}
-const userChoices = buildYourTeam(pokemon);
-console.log(userChoices); // Output the user's chosen 6 Pokémon
-
 
 async function handleUpdate(req, res) {
   try {
