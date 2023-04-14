@@ -48,7 +48,6 @@ const userModel = (sequelize, DataTypes) => {
   };
 
   model.authenticateToken = async function (token) {
-    console.log('im before the catch block in model.authenticatetoken' + token);
     try {
       const parsedToken = jwt.verify(token, SECRET);
       const user = await this.findOne({ where: { name: parsedToken.name } });
