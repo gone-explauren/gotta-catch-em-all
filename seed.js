@@ -1,19 +1,19 @@
 let newPokemon01 = Pokemon.create({
-	name: 'rattata',
-  primaryType: 'normal',
-  status: base,
+	"name": "rattata",
+  "primaryType": "normal",
+  "status": "base"
 });
 
 let newPokemon02 = Pokemon.create({
-	name: 'ponyta',
-  primaryType: 'fire',
-  status: base,
+  "name": "ponyta",
+  "primaryType": "fire",
+  "status": "base"
 });
 
 let newPokemon03 = Pokemon.create({
-	name: 'clamperl',
-  primaryType: 'water',
-  status: base,
+  "name": "clamperl",
+  "primaryType": "water",
+  "status": "base"
 });
 
 let newPokemon04 = Pokemon.create({
