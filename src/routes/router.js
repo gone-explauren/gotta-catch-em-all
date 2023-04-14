@@ -16,20 +16,22 @@ router.param('model', (req, res, next) => {
   }
 });
 
-router.get('/:model', permissions('read'), handleGetAll);
-router.get('/:model/:id', permissions('read'), handleGetOne);
-router.post('/:model', permissions('create'), handleCreate);
-router.put('/:model/:id', permissions('update'), handleUpdate);
-router.delete('/:model/:id', permissions('delete'), handleDelete);
+router.get('/:model', handleGetAll);
+router.get('/:model/:id', handleGetOne);
+router.post('/:model',  handleCreate);
+router.put('/:model/:id', handleUpdate);
+router.delete('/:model/:id', handleDelete);
+// router.delete('/:model/:id', permissions('delete'), handleDelete);
 
 async function handleGetAll(req, res) {
-  let allRecords = await req.model.get();
+  console.log("req.model ", typeof( req.model))
+  let allRecords = await req.model.read();
   res.status(200).json(allRecords);
 }
 
 async function handleGetOne(req, res) {
   const id = req.params.id;
-  let theRecord = await req.model.get(id);
+  let theRecord = await req.model.read(id);
   res.status(200).json(theRecord);
 }
 

@@ -5,9 +5,9 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const SECRET = process.env.SECRET_STRING;
 
-const userModel = (sequelize, DataTypes) => sequelize.define('User', {
+const userModel = (sequelize, DataTypes) => sequelize.define('user', {
   name: { type: DataTypes.STRING, required: true },
-  pokemonArray: { type: DataTypes.ARRAY, required: false },
+  pokemonArray: { type: DataTypes.TEXT, required: false },
   role: { type: DataTypes.ENUM('trainer', 'gymLeader', 'pokemonMaster'), required: true },
   email: { type: DataTypes.STRING, required: true },
   password: { type: DataTypes.STRING, required: true },
@@ -25,14 +25,15 @@ const userModel = (sequelize, DataTypes) => sequelize.define('User', {
         gymLeader: ['read', 'write', 'update'],
         pokemonMaster: ['read', 'write', 'update', 'delete']
       }
-
-      model.beforeCreate(async user => {
-        user.password = await bcrypt.hash(user.password, 10);
-      });
-      
       return acl[this.role]
     }
   }
 });
 
 module.exports = userModel;
+
+
+      // model.beforeCreate(async user => {
+      //   user.password = await bcrypt.hash(user.password, 10);
+      // });
+      

@@ -45,9 +45,14 @@ class Collection {
    * @returns model instance
    */
   async read(id, options) {
+    console.log(id)
     try {
       if (id) {
-        console.log(options);
+        console.log("========================");
+        console.log("========================");
+        console.log('in the id read:')
+        console.log("========================");
+        console.log("========================");
         return await this.model.findOne({ where: {id:id}, ...options});
       } else {
         return await this.model.findAll(options);

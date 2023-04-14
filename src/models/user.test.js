@@ -25,8 +25,8 @@ describe('Testing the user model', () => {
       email: 'test@gmail.com',
       password: 'test',
     });
-
-    // expect(newUser.token).toBeTruthy();
+    console.log('token of new user is ' + newUser.token)
+    expect(newUser.token).toBeTruthy();
     expect(newUser.password).toEqual('test');
   });
 
@@ -52,7 +52,7 @@ describe('Testing the user model', () => {
       email: 'updatedemail@gmail.com',
       password: 'test',
     };
-    let updUser = await user.model.update(
+    let updUser = await user.update(
       updatedUser,
       { where: { id: id } }
     );
@@ -71,4 +71,4 @@ describe('Testing the user model', () => {
     expect(deletedUser).toEqual(1);
   });
 
-  })
+})
