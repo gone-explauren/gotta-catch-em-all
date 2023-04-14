@@ -3,23 +3,23 @@
 const pokemonArray = [];
 
 let newPokemon01 = Pokemon.create({
-	name: 'rattata',
-  primaryType: 'normal',
-  status: base,
+	"name": "rattata",
+  "primaryType": "normal",
+  "status": "base"
 });
 pokemonArray.push[newPokemon01.name];
 
 let newPokemon02 = Pokemon.create({
-	name: 'ponyta',
-  primaryType: 'fire',
-  status: base,
+  "name": "ponyta",
+  "primaryType": "fire",
+  "status": "base"
 });
 pokemonArray.push[newPokemon02.name];
 
 let newPokemon03 = Pokemon.create({
-	name: 'clamperl',
-  primaryType: 'water',
-  status: base,
+  "name": "clamperl",
+  "primaryType": "water",
+  "status": "base"
 });
 pokemonArray.push[newPokemon03.name];
 

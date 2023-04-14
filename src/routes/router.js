@@ -2,6 +2,7 @@
 
 const express = require('express');
 const dataModules = require('../models');
+const bearerAuth = require('../auth/middleware/bearer');
 const permissions = require('../auth/middleware/acl');
 const pokemonArray = require('../../seed')
 
@@ -17,28 +18,43 @@ router.param('model', (req, res, next) => {
   }
 });
 
-router.get('/:model', permissions('read'), handleGetAll);
-router.get('/:model/:id', permissions('read'), handleGetOne);
-router.post('/:model', permissions('create'), handleCreate);
-router.put('/:model/:id', permissions('update'), handleUpdate);
-router.delete('/:model/:id', permissions('delete'), handleDelete);
+router.get('/:model', bearerAuth, permissions('read'), handleGetAll);
+router.get('/:model/:id', bearerAuth, permissions('read'), handleGetOne);
+router.post('/:model', bearerAuth, permissions('write'), handleCreate);
+router.put('/:model/:id', bearerAuth, permissions('update'), handleUpdate);
+router.delete('/:model/:id', bearerAuth, permissions('delete'), handleDelete);
 
 async function handleGetAll(req, res) {
-  let allRecords = await req.model.get();
-  res.status(200).json(allRecords);
+  try {
+    const allRecords = await req.model.read();
+    res.status(200).json(allRecords);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 }
 
 async function handleGetOne(req, res) {
-  const id = req.params.id;
-  let theRecord = await req.model.get(id);
-  res.status(200).json(theRecord);
+  try {
+    const id = req.params.id;
+    let theRecord = await req.model.read(id);
+    res.status(200).json(theRecord);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 }
 
-async function handleCreate(req, res, next) {
-  let obj = req.body;
-  let newRecord = await req.model.create(obj);
-  res.status(201).json(newRecord);
-	next(buildYourTeam);
+async function handleCreate(req, res) {
+  try {
+    let obj = req.body;
+    let newRecord = await req.model.create(obj);
+    res.status(201).json(newRecord);
+		next(buildYourTeam());
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 }
 
 function buildYourTeam(arr) {
@@ -68,16 +84,28 @@ console.log(userChoices); // Output the user's chosen 6 Pokémon
 
 
 async function handleUpdate(req, res) {
-  const id = req.params.id;
-  const obj = req.body;
-  let updatedRecord = await req.model.update(id, obj);
-  res.status(200).json(updatedRecord);
+  try {
+    const id = req.params.id;
+    const obj = req.body;
+    let updatedRecord = await req.model.update(id, obj);
+    res.status(200).json(updatedRecord);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
 }
 
 async function handleDelete(req, res) {
-  let id = req.params.id;
-  let deletedRecord = await req.model.delete(id);
-  res.status(200).json(deletedRecord);
+  try {
+    let id = req.params.id;
+    let deletedRecord = await req.model.delete(id);
+    res.status(200).json(deletedRecord);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+}
+
 }
 
 module.exports = router;

@@ -15,3 +15,4 @@ describe('Test logger middleware', () => {
     expect(request.method).toEqual('get');
   });
 });
+

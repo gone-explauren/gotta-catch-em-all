@@ -4,7 +4,6 @@ const { sequelize, user } = require('./index.js');
 
 try {
   beforeAll(async () => {
-    console.log('await stops here');
     await sequelize.sync();
   });
 
@@ -25,20 +24,20 @@ describe('Testing the user model', () => {
       email: 'test@gmail.com',
       password: 'test',
     });
-
-    // expect(newUser.token).toBeTruthy();
-    expect(newUser.password).toEqual('test');
+    console.log('token of new user is ' + newUser.token)
+    expect(newUser.token).toBeTruthy();
+    expect(newUser.password).toBeTruthy();
   });
 
   test('can read all users', async () => {
-    let allUsers = await user.findAll();
+    let allUsers = await user.model.findAll();
     console.log(allUsers);
     expect(allUsers.length > 0).toBeTruthy();
   });
 
   test('can read selected user', async () => {
     const id = 1;
-    let selUser = await user.findByPk(id);
+    let selUser = await user.model.findByPk(id);
     console.log(selUser);
     expect(selUser.id).toEqual(1);
   });
@@ -58,7 +57,7 @@ describe('Testing the user model', () => {
     );
     console.log('return from update is ' + updUser);
     expect(updUser).toEqual([1]);
-    const userAfterUpdate = await user.findByPk(id);
+    const userAfterUpdate = await user.model.findByPk(id);
     console.log(userAfterUpdate);
     expect(userAfterUpdate.email).toEqual('updatedemail@gmail.com');
   });
@@ -66,9 +65,9 @@ describe('Testing the user model', () => {
 
   test('can delete user', async () => {
     const id = 1;
-    let deletedUser = await user.destroy( { where: { id: id } });
+    let deletedUser = await user.model.destroy( { where: { id: id } });
     console.log(deletedUser);
     expect(deletedUser).toEqual(1);
   });
 
-  })
+})

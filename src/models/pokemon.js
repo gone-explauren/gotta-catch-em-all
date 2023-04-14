@@ -4,7 +4,7 @@ const pokemonModel = (sequelize, DataTypes) => sequelize.define('Pokemon', {
   name: { type: DataTypes.STRING, required: true },
   primaryType: { type: DataTypes.STRING, required: true },
   secondaryType: { type: DataTypes.STRING, required: false },
-  status: { type: DataTypes.ENUM('legendary', 'evolved', 'base'), required: true },
+  status: { type: DataTypes.ENUM('legendary', 'evolved', 'base'), required: false },
   statusCapabilities: {
     type: DataTypes.VIRTUAL,
     get() {
