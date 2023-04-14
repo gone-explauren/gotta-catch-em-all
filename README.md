@@ -12,7 +12,7 @@ Create an Express server connected to SQL database that allows users to sign up,
 
 ## Whiteboard
 
-[First Whiteboard, showing roles and database models](./img/pokemon-app-whiteboard.png)
+![First Whiteboard, showing roles and database models](./img/pokemon-app-whiteboard.png)
 
 ## Method
 
