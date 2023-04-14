@@ -1,58 +1,12 @@
-// const  = require('');
-
-// add the pokemon from the seed.js to this array? 
-// pokemon.push(pokemon.name)
-// const pokemon = [];
-
-// function buildYourTeam(arr) {
-//   const userTeam = [];
-
-//   while (userTeam.length < 6) {
-//     const choice = prompt(`Choose ${6 - choices.length} more Pokemon:\n${arr.filter(p => !choices.includes(p)).join('\n')}`);
-
-//     if (!choice || !arr.includes(choice)) {
-//       alert('Please choose a valid Pokemon!');
-//     }
-
-// 		if (user.role === 'trainer' && pokemon.status !== 'base') {
-// 			alert('This Pokemon is too strong for your team! Please choose a different Pokemon.')
-// 		}
-
-// 		if (user.role === 'gymLeader' && pokemon.status === 'legendary') {
-// 			alert('This Pokemon is too strong for your team! Please choose a different Pokemon.')
-// 		}
-
-//     else {
-//       userTeam.push(choice);
-//     }
-//   }
-
-//   return userTeam;
-// }
-
-// const userChoices = buildYourTeam(pokemon);
-// console.log(userChoices); // Output the user's chosen 6 Pokémon
-
-
 class Collection {
   constructor(model) {
     this.model = model;
   }
 
-  /**
-   *
-   * @param {INTEGER|UNDEFINED} id
-   * @returns model instance
-   */
   async read(id, options) {
     console.log(id)
     try {
       if (id) {
-        console.log("========================");
-        console.log("========================");
-        console.log('in the id read:')
-        console.log("========================");
-        console.log("========================");
         return await this.model.findOne({ where: {id:id}, ...options});
       } else {
         return await this.model.findAll(options);
@@ -98,3 +52,41 @@ class Collection {
 }
 
 module.exports = Collection;
+
+
+
+
+// const  = require('');
+
+// add the pokemon from the seed.js to this array? 
+// pokemon.push(pokemon.name)
+// const pokemon = [];
+
+// function buildYourTeam(arr) {
+//   const userTeam = [];
+
+//   while (userTeam.length < 6) {
+//     const choice = prompt(`Choose ${6 - choices.length} more Pokemon:\n${arr.filter(p => !choices.includes(p)).join('\n')}`);
+
+//     if (!choice || !arr.includes(choice)) {
+//       alert('Please choose a valid Pokemon!');
+//     }
+
+// 		if (user.role === 'trainer' && pokemon.status !== 'base') {
+// 			alert('This Pokemon is too strong for your team! Please choose a different Pokemon.')
+// 		}
+
+// 		if (user.role === 'gymLeader' && pokemon.status === 'legendary') {
+// 			alert('This Pokemon is too strong for your team! Please choose a different Pokemon.')
+// 		}
+
+//     else {
+//       userTeam.push(choice);
+//     }
+//   }
+
+//   return userTeam;
+// }
+
+// const userChoices = buildYourTeam(pokemon);
+// console.log(userChoices); // Output the user's chosen 6 Pokémon

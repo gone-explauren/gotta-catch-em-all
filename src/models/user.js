@@ -15,7 +15,7 @@ const userModel = (sequelize, DataTypes) => {
     token: {
       type: DataTypes.VIRTUAL,
       get() {
-        return jwt.sign({ username: this.username }, SECRET);
+        return jwt.sign({ name: this.name }, SECRET);
       }
     },
     capabilities: {
@@ -37,18 +37,24 @@ const userModel = (sequelize, DataTypes) => {
   });
 
   model.authenticateBasic = async function (name, password) {
-    console.log('authenticateBasic function received user name: ' + name);
-    console.log('authenticateBasic received user password: ' + password);
     const receivedUser = await this.findOne({ where: { name } });
-    console.log(receivedUser);
-    if ( receivedUser ) { console.log('password received is ' + receivedUser.password) }
-    else { console.log('user not found'); }
+    if (receivedUser) { console.log('password received is ' + receivedUser.password) }
+    else { console.error('user not found'); }
     const valid = await bcrypt.compare(password, receivedUser.password);
-    console.log('bcrypt says your password is: ' + valid);
-    console.log(`user ${name} signed in`);
     if (valid) { return receivedUser; }
     else {
       throw new Error('Invalid User');
+    }
+  };
+
+  model.authenticateToken = async function (token) {
+    console.log('im before the catch block in model.authenticatetoken' + token);
+    try {
+      const parsedToken = jwt.verify(token, SECRET);
+      const user = await this.findOne({ where: { name: parsedToken.name } });
+      if (user) { return user; }
+    } catch (error) {
+      console.error('there was a problem with authentication');
     }
   };
 
@@ -59,5 +65,10 @@ const userModel = (sequelize, DataTypes) => {
 module.exports = userModel
 
 
+// sample user for signup
 
-// { "name": "crypt", "pokemonArray": "", "role": "pokemonMaster", "email": "email@email.com", "password": "pass" }
+// {  "name": "name",
+//    "pokemonArray": "",
+//    "role": "role",
+//    "email": "email@email.com",
+//     "password": "password"   }
