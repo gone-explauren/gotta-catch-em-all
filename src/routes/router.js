@@ -24,7 +24,7 @@ router.delete('/:model/:id', handleDelete);
 // router.delete('/:model/:id', permissions('delete'), handleDelete);
 
 async function handleGetAll(req, res) {
-  console.log("req.model ", typeof( req.model))
+  console.log("req.model ", typeof( req.model ))
   let allRecords = await req.model.read();
   res.status(200).json(allRecords);
 }

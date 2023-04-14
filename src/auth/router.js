@@ -10,9 +10,14 @@ router.post('/signin', basicAuth, handleSignin);
 router.get('/users', bearerAuth, handleGetUsers);
 router.get('/secret', bearerAuth, handleSecret);
 
+
+const { user } = require('../models');
+
+const permissions = require('./middleware/acl');
+
 async function handleSignup(req, res, next) {
   try {
-    let userRecord = await users.create(req.body);
+    let userRecord = await user.create(req.body);
     const output = {
       user: userRecord,
       token: userRecord.token
